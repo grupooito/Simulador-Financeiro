@@ -4,96 +4,123 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Calculadora de Orçamento</title>
 </head>
 <body>
     
-
+    
     
     <img src="sprint/logo_Termosense.png" width="300 px" alt="logo_Termosense">
     <h1 style="color: deepskyblue;">Calculadora de Orçamento</h1>
-
+    
     Quanto gasta em medicamentos termolabeis ao ano ?
     <p></p>
-
+    
     <input id="valor1" type="text" placeholder="Digite aqui o valor gasto ao ano em medicamentos">
     <p></p>
-
+    
     Qual o valor perdido em medicamentos ao ano?
     <p></p>
     <input id="valor2" type="text" placeholder="Digite o valor perdido em medicamentos ao ano">
     
     <p></p>
-
+    
     <button onclick="calcular()" > Calcular </button>
     <button onclick="limpar()">Limpar</button>
-
-
+    
+    
     <div id="exibir"></div>
-
+    
     <p></p>
-
+    
     <h1 style="color:deepskyblue;">Orçamento dos sensores</h1>
-
-
+    
+    
     <h2>Preço fixo</h2>
-
     
-        
-            Sensor de temperatura Lm35 sai por: <b>R$15,00</b>
-        <br>
-
     
-        <br>
-            Sensor de Umidade e Temperatura DHT11 sai por: <b>R$ 13,90</b> 
-
+    
+    Sensor de temperatura Lm35 sai por: <b>R$15,00</b>
+    <br>
+    
+    
+    <br>
+    Sensor de Umidade e Temperatura DHT11 sai por: <b>R$ 13,90</b> 
+    
     <br><br>
-
+    
     <h4>quantos sensores você quer?</h4>
-
+    
     Sensor <b>LM35</b>:
     <input id="sensor_lm35" type="text" placeholder= "Insira aqui">
-
+    
     <br><br>
-
+    
     Sensor <b>DHT11</b>:
     <input id="sensor_dht11" type="text" placeholder= "Insira aqui">
-
-
     
-
+    <p></p>
+    
+    <button onclick="total()">Total</button>
+    <button onclick="limpe()">Limpar</button>
+    
+    <div id="div_msg"></div>
+    
+    
+    
+    
 </body>
 </html>
 
 <script>
-
-function calcular(){
-
-   var gasto_ano = Number(valor1.value);
-   //valor do primeiro input
-   var perdido_ano = Number(valor2.value);
-   //valor do segundo input
-   var sobre_ano = gasto_ano - perdido_ano;
-   // primeiro valor - segundo valor
-   var lucro = perdido_ano * 0.75;
-   //valor segundo input mais 0.75%
-   var soma = perdido_ano + lucro;
-   //segundo input + a variavel lucro
-
-   exibir.innerHTML = `O valor investido em medicamento perdido ao ano é de ${gasto_ano} reais.<br>`
-   exibir.innerHTML = `O valor perdido em medicamentos é de  ${perdido_ano} reais <br>`
-   exibir.innerHTML = `Contratando os serviçoes <b> Termo Sense </b> será perdido ${lucro.toFixed(2)} reais <br>`;
-   exibir.innerHTML = `Com isso o seu lucro será de ${soma.toFixed(2)} reais `;
-
-}
-
-
-function limpar(){
-       
-    valor1.value = " "
-    valor2.value = " "
-    exibir.innerHTML = " "     
-
-}
-
+    
+    function calcular(){
+        
+        var gasto_ano = Number(valor1.value);
+        //valor do primeiro input
+        var perdido_ano = Number(valor2.value);
+        //valor do segundo input
+        var sobre_ano = gasto_ano - perdido_ano;
+        // primeiro valor - segundo valor
+        var lucro = perdido_ano * 0.75;
+        //valor segundo input mais 0.75%
+        var soma = perdido_ano + lucro;
+        //segundo input + a variavel lucro
+        
+        exibir.innerHTML = `O valor investido em medicamento perdido ao ano é de ${gasto_ano} reais.<br>` +
+        `O valor perdido em medicamentos é de  ${perdido_ano} reais <br>` +
+        `Contratando os serviçoes <b> Termo Sense </b> será perdido ${lucro.toFixed(2)} reais <br>` +
+        `Com isso o seu lucro será de ${soma.toFixed(2)} reais`;
+    }
+    
+    function total(){
+        
+        var lm35 = 15.00;
+        var dht11 = 13.90;
+        var qtdLm35 = Number (sensor_lm35.value) * lm35;
+        var qtdDht11 = Number (sensor_dht11.value) * dht11;
+        var resultado = qtdLm35 + qtdDht11;
+        
+        var totalSensores = Number (sensor_lm35.value) + Number (sensor_dht11.value);
+        
+        div_msg.innerHTML += `Você solicitou: ${totalSensores} sensores. <br>`;
+        div_msg.innerHTML += `Foram ${sensor_lm35.value} sensores LM35, no valor total de: R$ ${qtdLm35}. <br>`;
+        div_msg.innerHTML += `Foram ${sensor_dht11.value} sensores DHT11, no valor total de: R$ ${qtdDht11}.<br><br>`;
+        div_msg.innerHTML += `O valor total da sua compra é de: R$ ${resultado}.`;
+    }
+    
+    function limpar(){
+        
+        valor1.value = " ";
+        valor2.value = " ";
+        exibir.innerHTML = " ";
+        
+    }
+    
+    function limpe(){
+        
+        sensor_lm35.value = " ";
+        sensor_dht11.value = " ";
+        div_msg.innerHTML = " ";
+    }
 </script>
