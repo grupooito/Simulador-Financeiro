@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orçamento Termosense</title>
+</head>
+<body style="background: dodgerblue;">
+    <div style="text-align: center;"> <img src="logo_Termosense.png" alt="Logo Empresa Termosense"> </div>
+    <h1 style="text-align: center;">Realize o seu orçamento aqui!</h1> <br> <br>
+
+    <h2>Contamos com serviçoes de:</h2>
+    * Sensores de temperatura, <b>R$ 15,00</b>; <br>
+    * Sensores de umidade, <b>R$ 30,00</b>; <br>
+    * Taxa de serviço: <b>R$ 5.000,00</b> <br>
+    <h3>Evite Desperdício!</h3>
+
+    <br> <br> <br>
+
+    Digite quantos sensores de <b>temperatura</b> você deseja para a sua empresa: <br>
+    <input type="text" id="num_sensorT" placeholder="Ex: 5"> <br> <br>
+
+    Digite quantos sensores de <b>umidade</b> você deseja para a sua empresa: <br>
+    <input type="text" id="num_sensorU" placeholder="Ex: 5"> <br> <br> <br>
+
+    <button onclick="orcamento()" id="orcamento" style="background-color: lightskyblue;">Realizar Orçamento
+    </button>
+
+    <br> <br> <br>
+
+    <h3 style="text-align: center;">Os detalhes do seu orçamento aparecerão aqui:</h3>
+    <div id="div_msg" style="text-align: center;"> </div>
+</body>
+</html>
+
+<script>
+    function orcamento(){
+        var n1 = Number (15)
+        var n2 = Number (30)
+        var n3 = Number (5000)
+        var n4 = Number (num_sensorT.value)
+        var n5 = Number (num_sensorU.value)
+        var result1 = Number (n1 * n4)
+        var result2 = Number (n2 * n5)
+
+        div_msg.innerHTML = `O valor total do seu orçamento é de R$ ${result1 + result2 + n3.toFixed(2)}. Agora é só
+        fechar contrato e dizer adeus ao desperdício excessivo de medicamentos!`
+        }
+
+
+
+
+
+</script>
